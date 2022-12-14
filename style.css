@@ -1,0 +1,578 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* globals */
+
+:root {
+  --orange: rgb(231, 202, 86);
+  --lb: lightblue;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  overflow-x: hidden;
+}
+
+/* / global */
+
+/* sidebar */
+.sidebar {
+    position: relative;
+    z-index: -1;
+}
+
+#chevron {
+  position: absolute;
+  top: 320px;
+  left: -148px;
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  transition: all .2s ease;
+}
+
+#chevron.active {
+  left: -80px;
+}
+
+.social-icons {
+  position: absolute;
+  top: 200px;
+  left: -178px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #222;
+  padding: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 2px solid black;
+  outline: 2px solid orange;
+  box-shadow: 2px 2px 20px -5px orange;
+  transition: all .2s ease;
+}
+
+.social-icons.active {
+  left: -250px;
+}
+
+.social-icons i {
+  font-size: 30px;
+}
+
+.social-icons i:hover {
+  text-shadow: 0px 0px 10px white;
+}
+/* / sidebar */
+
+/* navbar */
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 7px 10px;
+  background: #222;
+  color: white;
+  border-bottom: 2px solid orange;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: black;
+  box-shadow: 2px 2px 20px 0px black;
+}
+
+header h1 {
+  color: rgb(231, 202, 86);
+  letter-spacing: 2px;
+  padding: 0 50px;
+  border-left: 2px solid orange;
+  border-right: 2px solid orange;
+  box-shadow: -5px -7px 20px -7px orange;
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 2px 2px 10px orange;
+  transition: all .2s ease;
+}
+
+header h1:hover {
+  box-shadow: -5px -7px 20px -7px lightblue;
+  border-left: 2px solid lightblue;
+  border-right: 2px solid lightblue;
+  text-shadow: 2px 2px 10px lightblue;
+  color: lightblue;
+}
+
+@media (min-width: 960px) {
+  header h1 {
+    margin-left: -300px;
+  }
+}
+
+header nav a {
+  color: rgb(231, 197, 86);
+  margin: 0 20px;
+  padding: 20px;
+  transition: .3s all ease-out;
+}
+
+header nav a:hover {
+  color: orange;
+  border-left: inset 2.5px solid rgb(226, 163, 81);
+  border-right: inset 2.5px solid rgb(226, 163, 81);
+  box-shadow: 0px -0px 20px 5px rgb(226, 163, 81);
+}
+
+/*  Hamburger Menu */
+
+.menu {
+  display: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.menu span {
+  height: 3px;
+  width: 35px;
+  background: rgb(226, 163, 81);
+  display: block;
+  margin: 7px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu:hover {
+  transform: scale(1.1);
+}
+
+/* media queries for navbar */
+
+@media (max-width: 960px) {
+  header {
+    justify-content: space-between;
+  }
+
+  header nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    top: -100vh;
+    left: 0;
+    text-align: center;
+    justify-content: center;
+    transition: 0.3s;
+    background: #333;
+    border-bottom-right-radius: 100px;
+    z-index: 2;
+  }
+
+  header nav.active {
+    top: 0;
+    z-index: 2;
+  }
+
+  header nav a {
+    margin: 50px 0;
+  }
+
+  header nav a:hover {
+    border: none;
+    text-decoration: underline;
+  }
+
+  .menu {
+    display: block;
+    z-index: 2;
+  }
+}
+/*  / hamburger  */
+
+/* Dropdown navbar */
+
+.container-fluid {
+  background: rgb(226, 163, 81);
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
+.container-fluid.toggle-hide {
+  z-index: -1;
+}
+
+.dropbtn {
+  background-color: #333;
+  color: rgb(226, 163, 81);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  width: 100%;
+  border-bottom: 2px solid orange;
+  box-shadow: 2px 2px 10px 0px black;
+  transition: all .2s ease;
+}
+
+.dropbtn i {
+  margin-left: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 160px;
+  box-shadow: 2px 2px 16px 0px rgba(0, 0, 0);
+  width: 100%;
+  transition: all .2s ease;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: all .2s ease;
+}
+
+@media (min-width: 960px) {
+  .dropdown-content a:hover {
+    background-color: rgb(226, 163, 81);
+    color: black;
+    box-shadow: 0px 0px 5px 0px orange;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 100px;
+  }
+}
+
+@media (max-width: 960px) {
+  .dropdown-content.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(226, 163, 81);
+    padding-left: 20px;
+  }
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #444;
+  color: rgb(221, 164, 72);
+}
+
+/*  / navbar */
+
+/* hero section */
+
+.main-section {
+  background-image: linear-gradient(orange, black),
+  url("img/exercise.jpg");
+  color: red;
+  background-position: center center;
+  background-repeat: none;
+  background-size: cover;
+  background-blend-mode: saturation;
+  height: 72.6vh;
+  width: 100%;
+  display: flex;
+}
+
+.container {
+  height: 74vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 200px;
+  color: black;
+  font-size: 2rem;
+  flex: 1;
+}
+
+@media screen and (max-width: 550px) {
+  .main-section {
+    background-position: left;
+    background-size: 200%;
+    height: 85.5vh;
+  }
+}
+
+@media (max-width: 960px) {
+
+  .container {
+    margin-left: 50px;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  color: rgb(221, 164, 72);
+  text-shadow: 0px 0px 5px black;
+}
+
+.p-grey {
+  color: #333;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  line-height: 30px;
+  text-shadow: 0px 0px 2px black;
+}
+
+.main-section .join-btn {
+  margin-top: 50px;
+  width: 150px;
+  background: transparent;
+  border: 2px solid black;
+  box-shadow: 0px 0px 2px black;
+  text-shadow: 0px 0px 1px black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  letter-spacing: 1.0px;
+  transition: all .2s ease;
+}
+.main-section .join-btn:hover {
+  border: 2px solid rgb(221, 164, 72);
+  color: rgb(221, 164, 72);
+  box-shadow: 0px 0px 2px rgb(221, 164, 72);
+}
+
+.main-section .join-btn:active {
+  transform: scale(0.95);
+}
+
+/*  / hero section */
+
+/* subscribe section */
+
+.form-section {
+  background-color: #222;
+  width: 110vw;
+  margin: 0 -20px;
+  
+  padding: 20px;
+  border: 2px solid orange;
+  outline: 2px solid black;
+  box-shadow: 2px 2px 20px 0px black;
+}
+
+.form-section label[for=email] {
+  color: white;
+}
+
+.form-section form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .form-section form {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.form-section input {
+  width: 400px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin: 0 20px;
+}
+
+
+.form-section input:focus {
+  outline: 1.5px solid black !important;
+}
+
+.form-section button {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 2px solid black;
+  background: darkorange;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1.0px;
+  transition: all .2s ease;
+  box-shadow: 2px 2px 10px -3px black;
+}
+.form-section button:active {
+  transform: scale(0.95);
+  background: red;
+}
+
+/* / subscribe section */
+
+/* features */
+@media (min-width: 960px) {
+  .features {
+    height: 100vh;
+  }
+}
+
+.features {
+  background: #222;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: inset 0px 10px 9px -10px orange;
+}
+
+.features h1 {
+  color: rgb(237, 200, 79);
+  text-shadow: 4px 10px 20px orange;
+}
+
+.features .row {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.features .col {
+  padding: 30px;
+  background: rgb(226, 163, 81);
+  color: black;
+  margin: 20px 40px;
+  border-radius: 20px;
+  border: 2px solid black;
+  outline: 1px solid black;
+  box-shadow: 2px 2px 20px -5px orange;
+  width: 33%;
+}
+
+.features .col h2 {
+  margin-bottom: 10px;
+}
+
+.features .col i {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+/* Media queries for features */
+
+@media (max-width: 960px) {
+  .features {
+    padding: 50px 0px;
+  }
+  .features .row {
+    flex-direction: column;
+  }
+}
+
+/* / features */
+
+/* contact */
+
+.contact {
+  background-color: rgb(226, 163, 81);
+  padding: 50px;
+}
+
+.contact-h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  text-shadow: 7px 7px 25px black;
+}
+
+.contact .row {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  justify-content: center;
+}
+
+.contact .col2 {
+  background: #222;
+  padding: 20px 20px 0px 20px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.115);
+}
+
+.contact iframe {
+  border-radius: 20px;
+  box-shadow: 0 0px 2px 2px rgba(0, 0, 0, 0.097);
+}
+
+@media (max-width: 960px) {
+  .contact iframe {
+    width: 100%;
+  }
+}
+
+.contact form {
+  padding: 20px 0;
+}
+
+.contact input {
+  padding: 5px 20px;
+  border-radius: 20px;
+}
+
+.name {
+  margin-bottom: 20px;
+}
+
+.name input[type=email] {
+  padding: 5px 55px 5px 20px;
+}
+
+.subject {
+  display: flex;
+  align-items: flex-start;
+}
+
+textarea {
+  border-radius: 20px;
+  padding: 8px;
+  resize: none;
+  margin: 3px;
+}
+
+.contact button {
+  padding: 5px 20px;
+  background: rgb(226, 163, 81);
+  color: black;
+  border: none;
+  border-radius: 20px;
+  margin-left: 180px;
+  margin-top: 20px;
+  letter-spacing: 1.0px;
+}
+
+.contact button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 960px) {
+  .contact .row {
+    flex-direction: column;
+  }
+}
+
+/* / contact */
